@@ -1,0 +1,17 @@
+---
+trigger: glob
+globs: "**/package.json,**/package-lock.json,**/pnpm-lock.yaml,**/yarn.lock,**/requirements*.txt,**/pyproject.toml,**/go.mod,**/Cargo.toml,**/Gemfile"
+description: "Care when adding or changing dependencies and lockfiles."
+---
+
+# Dependency manifests and lockfiles
+
+Applies when you edit a manifest or lockfile.
+
+- Add a dependency only when existing code or the standard library cannot reasonably do the job. Say why in your summary.
+- Before adding one, check that it is maintained, widely used, and has a licence compatible with the project.
+- Change manifest and lockfile together, using the project's package manager. Never edit a lockfile by hand.
+- Prefer exact or tightly bounded versions over wildcard ranges.
+- Do not upgrade major versions as a side effect of another task. Propose it separately with the breaking changes listed.
+- Do not install anything globally or run install scripts from an unfamiliar package without telling the user first.
+- After changing dependencies, run the project's tests and build, and its audit command if one exists, and report the real output.
